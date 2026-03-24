@@ -1,0 +1,8 @@
+Today I will be presenting about smart pointers
+Smart pointers are, as the name says, a smarter pointer
+the purpose of a smart pointer is to prevent common errors
+like memory leak, dangling pointers and double-free errors
+A memory leak is when a pointer swich targets, leaving the original object unaccesable
+a dangling pointer is when 2 pointer points to the same object, and freeing one of the pointer
+causing the other pointer to point to invalid memory
+a double free error happens when a dangling pointer is freed
