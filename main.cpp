@@ -15,14 +15,15 @@ int getEnter() {
             return 1;
         }
     }
+    return 0;
 }
 
 int main() {
     ifstream Fil;
-    Fil.open("../present.txt");
-    // if (!Fil.is_open()) {
-    //     cout << "Could not open file" << endl;
-    // }
+    Fil.open("present.txt");
+    if (!Fil.is_open()) {
+        cout << "Could not open file" << endl;
+    }
 
     string str;
     while (getline(Fil, str)) {
