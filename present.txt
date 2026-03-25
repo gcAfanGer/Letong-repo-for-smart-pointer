@@ -6,3 +6,34 @@ A memory leak is when a pointer swich targets, leaving the original object unacc
 a dangling pointer is when 2 pointer points to the same object, and freeing one of the pointer
 causing the other pointer to point to invalid memory
 a double free error happens when a dangling pointer is freed
+all of these issues is cause by freeing pointers
+The purpose of smart pointers is to prevent these issues
+without taking lots of extra brain power
+To be able to use smart pointers, you need to #include <memory>
+There are 3 types of smart pointers
+unique_ptr, shared_ptr, weak_ptr
+auto_ptr is the early version of smart pointers but deprecated
+unique_ptr will prevent any other smart pointer from pointing to the same memory
+unique_ptr has no way to be copyed, you can only move the ownership
+BUT a normal pointer CAN copy a smart pointer
+for example, unique_ptr pt1 points to obj1
+any other unique_ptr can not point to obj1
+but a normal pointer CAN
+run1
+
+A shared_ptr is a smart pointer that can have multiple pointers pointing to the same object
+once a shared_ptr goes out of scope, only the last pointer will free the memory
+if 2 shared_ptr, p1 points to p2, and p2 points to p1
+it's a circular dependency, and will cause memory leak
+run2
+
+A weak_ptr is a pointer that reference to a memory
+but it does not OWN it
+in a circular dependency, use_count would glich out
+but a weak_ptr does not own the memory
+use_count will not count weak_ptr, and prevent leaks
+weak_ptr doen not contain any value
+weak_ptrlock(); will return shared_ptr or nullptr
+run3
+
+
